@@ -1,3 +1,18 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
-<Meta title="Introdução" />
+<Meta title="Introducao" />
+
+<x-input id="input" name="raca">
+  <x-label>Raca de Cachorro</x-label>
+</x-input>
+
+<x-render>
+  <template>
+    <x-text>\{name\}</x-text><br />
+  </template>
+  <x-on value="api/ok:method/render"></x-on>
+</x-render>
+
+<x-fetch name="api" url="https://api.thedogapi.com/v1/breeds/search?q={}">
+  <x-on value="x-input/change:method/get"></x-on>
+</x-fetch>

@@ -65,10 +65,6 @@ export default {
 				defaultValue: { summary: false },
 			},
 		},
-		onClick: {
-			action: "onClick",
-			description: "Evento disparado ao clicar no botão (detail incluído).",
-		},
 		size: {
 			control: { type: "select" },
 			options: ["sm", "md", "lg", "xl"],
@@ -109,6 +105,13 @@ export default {
 			control: "text",
 			description:
 				"O atributo `on` conecta eventos de outros elementos a este componente de forma declarativa, usando a sintaxe `source/event:target/handler|filtro`.",
+			table: {
+				category: "Echo",
+			},
+		},
+		onClick: {
+			action: "onClick",
+			description: "Evento disparado ao clicar no botão (detail incluído).",
 			table: {
 				category: "Echo",
 			},
