@@ -1,35 +1,25 @@
-# Workflow name
-name: Build and Publish Storybook to GitHub Pages
+name: 🚀 Publish Storybook to Github Pages 
 
 on:
-  # Event for the workflow to run on
+  workflow_call:
   push:
     branches:
-      - 'main' # Replace with the branch you want to deploy from
+      - main
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# List of jobs
 jobs:
-  deploy:
+  release:
     runs-on: ubuntu-latest
-    # Job steps
+    permissions:
+      contents: read
+      packages: write
     steps:
-      # Manual Checkout
       - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          fetch-depth: 0
-      # Set up Node
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
+          bun-version: latest
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          install_command: yarn install # default: npm ci
-          build_command: yarn build-storybook # default: npm run build-storybook
-          path: storybook-static # default: dist/storybook
-          checkout: false # default: true
+          install_command: bun install
+          build_command: bun run build-storybook
+          path: storybook-static
+          checkout: false

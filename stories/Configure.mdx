@@ -1,18 +1,69 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta } from '@storybook/addon-docs';
+import logo from './assets/nodujs_x.png';
 
-<Meta title="Introducao" />
+<Meta title="Configure" />
 
-<x-input id="input" name="raca">
-  <x-label>Raca de Cachorro</x-label>
-</x-input>
+<div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+  <img src={logo} alt="nodusjs/x" style={{ maxWidth: '300px' }} />
+</div>
 
-<x-render>
-  <template>
-    <x-text>\{name\}</x-text><br />
-  </template>
-  <x-on value="api/ok:method/render"></x-on>
-</x-render>
+`@nodusjs/x` é uma coleção de UI components reativos com um barramento de eventos embutido, permitindo aplicar dataflow de forma declarativa.
+Crie interfaces dinâmicas utilizando apenas marcação HTML — sem escrever uma linha de JavaScript.
+Ideal para aplicações modernas, enxutas e de fácil manutenção.
 
-<x-fetch name="api" url="https://api.thedogapi.com/v1/breeds/search?q={}">
-  <x-on value="x-input/change:method/get"></x-on>
-</x-fetch>
+
+### 📦 Install
+
+Você pode começar a usar o `@nodusjs/x` com zero configuração, via `cdn`.
+
+**Javascript**
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@nodusjs/x@latest/dist/x.js" type="module" async></script>
+```
+
+**CSS**
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/@nodusjs/x@latest/dist/x.css" rel="stylesheet" async />
+```
+
+### 🧪 Usage
+
+Aqui está um HTML base para começar a usar o `@nodusjs/x` com zero configuração:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NodusJS/X App</title>
+
+  <!-- Theme + Reset CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nodusjs/x@latest/dist/x.css" async />
+
+  <style>
+    :not(:defined) {
+      visibility: hidden;
+    }
+
+    body {
+      color-scheme: light dark;
+      background-color: light-dark(#FCFCFD, #0C111D);
+      transition: all 0.2s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sua marcação HTML com componentes aqui -->
+  <x-button>Olá Mundo</x-button>
+
+  <!-- NodusJS/X Core Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@nodusjs/x@latest/dist/x.js" type="module" async></script>
+</body>
+</html>
+```
+
+> É tão simples quanto escrever um `<button>` — mas com a elegância que o React prometeu lá em 2013 🫠.

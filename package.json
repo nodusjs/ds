@@ -1,20 +1,23 @@
 {
-  "name": "ds",
-  "version": "1.0.0",
-  "main": "index.js",
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@storybook/addon-docs": "^9.0.5",
     "@storybook/html-vite": "^9.0.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
     "storybook": "^9.0.5",
     "vite": "^6.3.5"
   },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "ds",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "version": "1.0.0"
 }
