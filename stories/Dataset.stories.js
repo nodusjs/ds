@@ -16,6 +16,13 @@ export default {
     onChange: fn(),
     upsert: "id",
   },
+  render: ({ name, onChange, upsert }) => {
+    const dataset = document.createElement("x-dataset");
+    dataset.setAttribute("name", name);
+    dataset.setAttribute("upsert", upsert);
+    dataset.addEventListener("change", (e) => onChange(e.detail));
+    return dataset;
+  },
   argTypes: {
     name: {
       control: "text",
@@ -42,13 +49,6 @@ export default {
       description:
         "Campo que identifica cada registro unicamente dentro do dataset (será usado pelo `<x-find>` e no payload dos eventos).",
     },
-  },
-  render: ({ name, onChange, upsert }) => {
-    const dataset = document.createElement("x-dataset");
-    dataset.setAttribute("name", name);
-    dataset.setAttribute("upsert", upsert);
-    dataset.addEventListener("change", (e) => onChange(e.detail));
-    return dataset;
   },
   tags: ["autodocs"],
 };
