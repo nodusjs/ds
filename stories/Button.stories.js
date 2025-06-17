@@ -29,13 +29,14 @@ export default {
     disabled,
     hidden,
     innerText,
+    on,
+    onBrand,
+    onClick,
     size,
     type,
     value,
     variant,
     width,
-    onBrand,
-    onClick,
   }) => {
     const button = document.createElement("x-button");
     button.innerText = innerText;
@@ -54,8 +55,8 @@ export default {
   argTypes: {
     color: {
       control: { type: "select" },
-      options: ["brand", "error"],
       description: "Define a cor visual principal do botão.",
+      options: ["brand", "error"],
       table: {
         defaultValue: { summary: "brand" },
       },
@@ -79,6 +80,14 @@ export default {
       control: "text",
       description: "Texto visível dentro do botão.",
     },
+    on: {
+      control: "text",
+      description:
+        "O atributo `on` conecta eventos de outros elementos a este componente de forma declarativa, usando a sintaxe `source/event:target/handler|filtro`.",
+      table: {
+        category: "Echo",
+      },
+    },
     onBrand: {
       control: "boolean",
       description: "Indica se o botão está sobre uma área com cor de marca.",
@@ -86,18 +95,25 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    onClick: {
+      action: "onClick",
+      description: "Evento disparado ao clicar no botão (detail incluído).",
+      table: {
+        category: "Echo",
+      },
+    },
     size: {
       control: { type: "select" },
-      options: ["sm", "md", "lg", "xl"],
       description: "Tamanho do botão.",
+      options: ["sm", "md", "lg", "xl"],
       table: {
         defaultValue: { summary: "md" },
       },
     },
     type: {
       control: { type: "select" },
-      options: ["submit", "reset"],
       description: "Tipo de botão HTML nativo.",
+      options: ["submit", "reset"],
       table: {
         defaultValue: { summary: "submit" },
       },
@@ -109,8 +125,8 @@ export default {
     },
     variant: {
       control: { type: "select" },
-      options: ["solid", "outlined", "ghost", "link"],
       description: "Estilo visual do botão.",
+      options: ["solid", "outlined", "ghost", "link"],
       table: {
         defaultValue: { summary: "solid" },
       },
@@ -119,22 +135,7 @@ export default {
       control: "text",
       description: "Tamanho horizontal (ex: 'hug', 'fill', 'px', '%').",
       table: {
-        defaultValue: { summary: "hub" },
-      },
-    },
-    on: {
-      control: "text",
-      description:
-        "O atributo `on` conecta eventos de outros elementos a este componente de forma declarativa, usando a sintaxe `source/event:target/handler|filtro`.",
-      table: {
-        category: "Echo",
-      },
-    },
-    onClick: {
-      action: "onClick",
-      description: "Evento disparado ao clicar no botão (detail incluído).",
-      table: {
-        category: "Echo",
+        defaultValue: { summary: "hug" },
       },
     },
   },
