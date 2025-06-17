@@ -2,7 +2,28 @@ import { fn } from "storybook/test";
 
 export default {
   title: "Component/Button",
-  tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Componente `x-button` do `@nodusjs/x`. Utilizado para ações principais e secundárias da interface.",
+      },
+    },
+  },
+  args: {
+    color: "brand",
+    disabled: false,
+    hidden: false,
+    innerText: "Button",
+    on: "",
+    onBrand: false,
+    onClick: fn(),
+    size: "md",
+    type: "submit",
+    value: "",
+    variant: "solid",
+    width: "hug",
+  },
   render: ({
     color,
     disabled,
@@ -117,28 +138,7 @@ export default {
       },
     },
   },
-  args: {
-    color: "brand",
-    disabled: false,
-    hidden: false,
-    innerText: "Button",
-    on: "",
-    onBrand: false,
-    onClick: fn(),
-    size: "md",
-    type: "submit",
-    value: "",
-    variant: "solid",
-    width: "hug",
-  },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          "Componente `x-button` do NodusJS/X. Utilizado para ações principais e secundárias da interface.",
-      },
-    },
-  },
+  tags: ["autodocs"],
 };
 
 export const Default = {

@@ -1,21 +1,21 @@
 import { fn } from "storybook/test";
 
 export default {
-  title: "Typography/Text",
+  title: "Typography/Heading",
   parameters: {
     docs: {
       description: {
         component:
-          "Componente `x-text` do `@nodusjs/x`. Tipografia versátil e semântica, adaptável ao contexto visual e semântico da interface.",
+          "Componente `x-heading` do `@nodusjs/x`. Fornece títulos semânticos (`h1`–`h6`) com tipografia consistente e adaptável ao contexto da interface.",
       },
     },
   },
   args: {
     align: "left",
-    as: "p",
+    as: "h1",
     color: "primary",
     hidden: false,
-    innerText: "Texto padrão",
+    innerText: "Título padrão",
     on: "",
     onBrand: false,
     size: "md",
@@ -33,22 +33,22 @@ export default {
     wrap,
     hidden,
   }) => {
-    const text = document.createElement("x-text");
-    text.innerText = innerText;
-    text.setAttribute("align", align);
-    text.setAttribute("as", as);
-    text.setAttribute("color", color);
-    text.setAttribute("size", size);
-    text.setAttribute("weight", weight);
-    text.setAttribute("wrap", wrap);
-    hidden && text.setAttribute("hidden", "");
-    onBrand && text.setAttribute("on-brand", "");
-    return text;
+    const heading = document.createElement("x-heading");
+    heading.innerText = innerText;
+    heading.setAttribute("align", align);
+    heading.setAttribute("as", as);
+    heading.setAttribute("color", color);
+    heading.setAttribute("size", size);
+    heading.setAttribute("weight", weight);
+    heading.setAttribute("wrap", wrap);
+    hidden && heading.setAttribute("hidden", "");
+    onBrand && heading.setAttribute("on-brand", "");
+    return heading;
   },
   argTypes: {
     align: {
       control: { type: "select" },
-      description: "Alinhamento horizontal do texto.",
+      description: "Alinhamento horizontal do título.",
       options: ["left", "center", "right", "justify"],
       table: {
         defaultValue: { summary: "left" },
@@ -56,15 +56,15 @@ export default {
     },
     as: {
       control: { type: "select" },
-      description: "Tag HTML semântica usada para renderizar o texto.",
-      options: ["p", "span", "strong", "em", "small", "label", "legend"],
+      description: "Nível semântico do título (h1–h6).",
+      options: ["h1", "h2", "h3", "h4", "h5", "h6"],
       table: {
-        defaultValue: { summary: "p" },
+        defaultValue: { summary: "h1" },
       },
     },
     color: {
       control: { type: "select" },
-      description: "Cor visual aplicada ao texto.",
+      description: "Cor visual aplicada ao título.",
       options: [
         "primary",
         "secondary",
@@ -90,7 +90,7 @@ export default {
     },
     innerText: {
       control: "text",
-      description: "Conteúdo textual interno exibido pelo componente.",
+      description: "Texto exibido dentro do título.",
     },
     on: {
       control: "text",
@@ -109,7 +109,7 @@ export default {
     },
     size: {
       control: { type: "select" },
-      description: "Tamanho da fonte do texto.",
+      description: "Tamanho da fonte do título.",
       options: ["xs", "sm", "md", "lg", "xl"],
       table: {
         defaultValue: { summary: "md" },
@@ -117,7 +117,7 @@ export default {
     },
     weight: {
       control: { type: "select" },
-      description: "Peso (espessura) da fonte.",
+      description: "Peso (espessura) da fonte do título.",
       options: ["regular", "medium", "semibold", "bold"],
       table: {
         defaultValue: { summary: "medium" },
@@ -125,7 +125,7 @@ export default {
     },
     wrap: {
       control: { type: "select" },
-      description: "Comportamento de quebra de linha do texto.",
+      description: "Comportamento de quebra de linha do título.",
       options: ["wrap", "nowrap", "truncate"],
       table: {
         defaultValue: { summary: "wrap" },
