@@ -1,33 +1,61 @@
 import { fn } from "storybook/test";
 
 export default {
-  title: "Directive/On",
+  title: "Data/Fetch",
   parameters: {
     docs: {
       description: {
         component:
-          "Componente `x-on` do `@nodusjs/std`. Diretiva headless que lê o atributo `value` no formato `source/event:target/handler|filtro` e registra esse fluxo no elemento pai. Não emite eventos visuais por si só, mas conecta o arco de dados no host.",
+          "Componente `x-fetch` do `@nodusjs/x`. Faz requisições HTTP para a URL configurada via atributo `url`, suportando os métodos `get`, `post`, `put` e `delete`. Emite eventos `ok` (quando a resposta chega sem erros) e `error` (quando há falha na requisição), passando o body como `detail`.",
       },
     },
   },
   args: {
-    value: "",
+    on: "",
+    onError: fn(),
+    onOk: fn(),
+    url: "",
   },
-  render: ({ value }) => {
-    const on = document.createElement("x-on");
-    on.setAttribute("value", value);
-    return on;
+  render: ({ on, onError, onOk, url }) => {
+    const fetchEl = document.createElement("x-fetch");
+    fetchEl.setAttribute("on", on);
+    fetchEl.setAttribute("url", url);
+    fetchEl.addEventListener("error", (e) => onError(e.detail));
+    fetchEl.addEventListener("ok", (e) => onOk(e.detail));
+    return fetchEl;
   },
   argTypes: {
-    value: {
+    on: {
       control: "text",
       description:
-        "Instruções de fluxo de dados no formato `source/event:target/handler|filtro`.",
+        "O atributo `on` conecta eventos de outros elementos a este componente de forma declarativa, usando a sintaxe `source/event:target/handler|filtro`.",
+      table: {
+        category: "Echo",
+      },
+    },
+    onError: {
+      action: "error",
+      description:
+        "Callback disparado quando a requisição falha (recebe o payload de erro).",
+      table: {
+        category: "Echo",
+      },
+    },
+    onOk: {
+      action: "ok",
+      description:
+        "Callback disparado quando a requisição é bem-sucedida (recebe o payload de dados).",
+      table: {
+        category: "Echo",
+      },
+    },
+    url: {
+      control: "text",
+      description:
+        "URL base para as requisições HTTP (ex.: `https://api.example.com/resource`).",
     },
   },
   tags: ["autodocs"],
 };
 
-export const Default = {
-  args: {},
-};
+export const Default = {};
