@@ -11,24 +11,34 @@ export default {
     },
   },
   args: {
+    on: "",
     onError: fn(),
     onOk: fn(),
     url: "",
   },
-  render: ({ onError, onOk, url }) => {
+  render: ({ on, onError, onOk, url }) => {
     const fetchEl = document.createElement("x-fetch");
+    fetchEl.setAttribute("on", on);
     fetchEl.setAttribute("url", url);
     fetchEl.addEventListener("error", (e) => onError(e.detail));
     fetchEl.addEventListener("ok", (e) => onOk(e.detail));
     return fetchEl;
   },
   argTypes: {
+    on: {
+      control: "text",
+      description:
+        "O atributo `on` conecta eventos de outros elementos a este componente de forma declarativa, usando a sintaxe `source/event:target/handler|filtro`.",
+      table: {
+        category: "Echo",
+      },
+    },
     onError: {
       action: "error",
       description:
         "Callback disparado quando a requisição falha (recebe o payload de erro).",
       table: {
-        category: "Events",
+        category: "Echo",
       },
     },
     onOk: {
@@ -36,7 +46,7 @@ export default {
       description:
         "Callback disparado quando a requisição é bem-sucedida (recebe o payload de dados).",
       table: {
-        category: "Events",
+        category: "Echo",
       },
     },
     url: {
